@@ -1,0 +1,11 @@
+1- insertNodeAtTail
+link: https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem?isFullScreen=true
+
+/*********************************************************************** */
+2- insertNodeAtHead
+link: https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem?isFullScreen=true
+
+/*********************************************************************** */
+3- insertNodeAtPosition
+link: https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem?isFullScreen=true
+
