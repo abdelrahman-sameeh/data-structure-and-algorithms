@@ -9,3 +9,19 @@ link: https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linke
 3- insertNodeAtPosition
 link: https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem?isFullScreen=true
 
+/*********************************************************************** */
+4- deleteNode
+link: https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list/problem?isFullScreen=true
+
+/*********************************************************************** */
+5- reversePrint
+link: https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list-in-reverse/problem?isFullScreen=true
+
+/*********************************************************************** */
+6- reverse
+link: https://www.hackerrank.com/challenges/reverse-a-linked-list/problem?isFullScreen=true
+
+/*********************************************************************** */
+7- CompareLists
+link: https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true
+
