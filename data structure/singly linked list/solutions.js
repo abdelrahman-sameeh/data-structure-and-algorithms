@@ -14,13 +14,13 @@ function insertNodeAtTail(head, data) {
 }
 
 class SinglyLinkedListNode {
-  constructor(data, next) {
+  constructor(data, next = null) {
     this.data = data;
     this.next = next;
   }
 }
 
-let head = new SinglyLinkedListNode(1, new SinglyLinkedListNode(2, null));
+let head = new SinglyLinkedListNode(1, new SinglyLinkedListNode(2));
 
 // console.log(insertNodeAtTail(head, 3));
 
@@ -37,7 +37,7 @@ function insertNodeAtHead(head, data) {
   return head;
 }
 
-head = new SinglyLinkedListNode(1, new SinglyLinkedListNode(2, null));
+head = new SinglyLinkedListNode(1, new SinglyLinkedListNode(2));
 
 // console.log(insertNodeAtHead(head, 3));
 // console.log(insertNodeAtHead(insertNodeAtHead(head, 3), 4));
@@ -172,3 +172,54 @@ head = new SinglyLinkedListNode(
 head2 = head;
 
 // console.log(CompareLists(head1, head2));
+
+/*********************************************************************** */
+// 8- mergeLists
+
+function addNewNode(head, newNode) {
+  if (!head) {
+    return newNode;
+  }
+  let current = head;
+  while (current.next) {
+    current = current.next;
+  }
+  current.next = newNode;
+  return head;
+}
+
+function mergeLists(head1, head2) {
+  let result = null;
+  let targetNode = null;
+  while (head1 && head2) {
+    if (head1.data < head2.data) {
+      targetNode = JSON.parse(JSON.stringify(head1));
+      targetNode.next = null;
+      head1 = head1.next;
+      result = addNewNode(result, targetNode);
+    } else {
+      targetNode = JSON.parse(JSON.stringify(head2));
+      targetNode.next = null;
+      head2 = head2.next;
+      result = addNewNode(result, targetNode);
+    }
+  }
+
+  if (head1) {
+    result = addNewNode(result, head1);
+  }
+
+  if (head2) {
+    result = addNewNode(result, head2);
+  }
+
+  return result;
+}
+
+head1 = new SinglyLinkedListNode(
+  0,
+  new SinglyLinkedListNode(3, new SinglyLinkedListNode(7))
+);
+head2 = new SinglyLinkedListNode(1, new SinglyLinkedListNode(2));
+
+console.log(mergeLists(head1, head2));

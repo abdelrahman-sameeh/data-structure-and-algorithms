@@ -25,3 +25,7 @@ link: https://www.hackerrank.com/challenges/reverse-a-linked-list/problem?isFull
 7- CompareLists
 link: https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true
 
+/*********************************************************************** */
+8- mergeLists
+link: https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem?isFullScreen=true
+
