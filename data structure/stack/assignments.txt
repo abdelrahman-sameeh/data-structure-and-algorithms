@@ -2,9 +2,12 @@
 link: https://www.hackerrank.com/challenges/balanced-brackets/problem?isFullScreen=true
 
 /*********************************************************************** */
-
 2- equalStacks
 link: https://www.hackerrank.com/challenges/equal-stacks/problem?isFullScreen=true
+
+/*********************************************************************** */
+3- gameOfTwoStacks
+link: https://www.hackerrank.com/challenges/game-of-two-stacks/problem?isFullScreen=true
 
 /*********************************************************************** */
 
