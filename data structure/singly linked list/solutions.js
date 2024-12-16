@@ -222,4 +222,37 @@ head1 = new SinglyLinkedListNode(
 );
 head2 = new SinglyLinkedListNode(1, new SinglyLinkedListNode(2));
 
-console.log(mergeLists(head1, head2));
+// console.log(mergeLists(head1, head2));
+
+/*********************************************************************** */
+// 8- getNode
+
+function getNode(head, positionFromTail) {
+
+  const dict = {}
+  let i=0
+  while(head){
+    dict[i] = head.data;
+    i++
+    head=head.next
+  }
+  // this to make i 0 based indexing
+  i=i-1;
+  return dict[i-positionFromTail]
+
+}
+
+head = new SinglyLinkedListNode(
+  1,
+  new SinglyLinkedListNode(
+    2,
+    new SinglyLinkedListNode(3, new SinglyLinkedListNode(4, null))
+  )
+);
+
+
+console.log(getNode(head, 0));
+console.log(getNode(head, 1));
+console.log(getNode(head, 2));
+console.log(getNode(head, 3));
+
