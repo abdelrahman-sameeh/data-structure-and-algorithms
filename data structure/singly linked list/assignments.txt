@@ -29,3 +29,7 @@ link: https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isF
 8- mergeLists
 link: https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem?isFullScreen=true
 
+/*********************************************************************** */
+9- getNode
+link: https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true
+
