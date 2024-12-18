@@ -10,6 +10,8 @@ link: https://www.hackerrank.com/challenges/equal-stacks/problem?isFullScreen=tr
 link: https://www.hackerrank.com/challenges/game-of-two-stacks/problem?isFullScreen=true
 
 /*********************************************************************** */
+4- Largest Rectangle
+link: https://www.hackerrank.com/challenges/largest-rectangle/problem?isFullScreen=true
 
 
 
