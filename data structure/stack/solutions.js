@@ -178,6 +178,7 @@ const arr2 = [2, 1, 5, 1];
 //   return max;
 // }
 
+// Solution 3 using stack technique
 function largestRectangle(arr) {
   let maxArea = 0;
   const stack = [];
