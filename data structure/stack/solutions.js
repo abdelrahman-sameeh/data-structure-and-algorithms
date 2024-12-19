@@ -204,8 +204,121 @@ function largestRectangle(arr) {
   return maxArea;
 }
 
-
-
 // console.log(largestRectangle([2, 1, 2, 3, 2, 1, 2]));
 // console.log(largestRectangle([1, 2, 3, 4, 5]));
-console.log(largestRectangle([2, 1, 2, 3, 2]));
+// console.log(largestRectangle([2, 1, 2, 3, 2]));
+
+/*********************************************************************** */
+// 5- Simple Text Editor
+
+function processData(input) {
+  // الجزء دا عشان موقع hackerrank 
+  // انما احنا بنبعت ك array directly 
+  //----------------------------
+  // input = input.split('\n')
+  //----------------------------
+
+  let string = "";
+  const stack = [];
+
+  for (const item of input) {
+    const [opt, data] = item.split(" ");
+
+    if (opt === "1") {
+      stack.push({
+        opt,
+        index: string.length,
+      });
+      string += data;
+    } else if (opt === "2") {
+      stack.push({
+        opt,
+        deletedString: string.slice(string.length - +data),
+      });
+      string = string.slice(0, string.length - +data);
+    } else if (opt === "3") {
+      console.log(string[+data - 1]);
+    } else if (opt === "4") {
+      const top = stack.pop();
+      if (top.opt === "1") {
+        string = string.slice(0, top.index);
+      } else if (top.opt === "2") {
+        string += top.deletedString;
+      }
+    }
+  }
+
+}
+
+// processData(["1 abc", "3 3", "2 3", "1 xy", "3 2", "4", "4", "3 1"]);
+
+/*********************************************************************** */
+// 6- Poisonous Plants
+/**
+ * @NOT_ACCEPTED
+ */
+
+function poisonousPlants(arr) {
+  function main(arr, numberOfDays = 0) {
+    const stack = [arr[0]]; 
+    let good = true;
+
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] <= arr[i - 1]) {
+        stack.push(arr[i]); 
+      } else {
+        good = false; 
+      }
+    }
+
+    if (good) {
+      return numberOfDays;
+    } else {
+      return main(stack, numberOfDays + 1); 
+    }
+  }
+
+  return main(arr);
+}
+
+
+/**
+ * @@CHAT_GPT_SOLUTION 
+ * @NOT_ACCEPTED
+ */
+
+function poisonousPlants(arr) {
+  let days = 0;
+
+  while (true) {
+    const survivors = [arr[0]]; 
+    let plantsDied = false;
+
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] <= arr[i - 1]) {
+        survivors.push(arr[i]);
+      } else {
+        plantsDied = true;
+      }
+    }
+
+    if (!plantsDied) {
+      break;
+    }
+
+    arr = survivors;
+    days++;
+  }
+
+  return days;
+}
+
+
+
+
+// console.log(poisonousPlants([6, 5, 8, 4, 7, 10, 9]));
+console.log(poisonousPlants([3, 6, 2, 7, 5]));
+console.log(poisonousPlants([1, 1, 1, 1, 1]));
+
+
+

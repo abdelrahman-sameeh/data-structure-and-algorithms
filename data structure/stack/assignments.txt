@@ -13,5 +13,11 @@ link: https://www.hackerrank.com/challenges/game-of-two-stacks/problem?isFullScr
 4- Largest Rectangle
 link: https://www.hackerrank.com/challenges/largest-rectangle/problem?isFullScreen=true
 
+/*********************************************************************** */
+5- Simple Text Editor
+link: https://www.hackerrank.com/challenges/simple-text-editor/problem?isFullScreen=false
 
+/*********************************************************************** */
+6- Poisonous Plants
+link: https://www.hackerrank.com/challenges/poisonous-plants/problem?isFullScreen=false
 
