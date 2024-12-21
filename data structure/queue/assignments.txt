@@ -1,0 +1,8 @@
+1- 387. First Unique Character in a String
+link: https://leetcode.com/problems/first-unique-character-in-a-string/description/?envType=problem-list-v2&envId=queue
+********************************************************************
+
+2- Number Of recent Queue
+link: https://leetcode.com/problems/number-of-recent-calls/submissions/1484792273/?envType=problem-list-v2&envId=queue
+********************************************************************
+
