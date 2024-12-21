@@ -317,8 +317,8 @@ function poisonousPlants(arr) {
 
 
 // console.log(poisonousPlants([6, 5, 8, 4, 7, 10, 9]));
-console.log(poisonousPlants([3, 6, 2, 7, 5]));
-console.log(poisonousPlants([1, 1, 1, 1, 1]));
+// console.log(poisonousPlants([3, 6, 2, 7, 5]));
+// console.log(poisonousPlants([1, 1, 1, 1, 1]));
 
 
 
