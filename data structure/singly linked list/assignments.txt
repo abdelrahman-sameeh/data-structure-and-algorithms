@@ -33,3 +33,11 @@ link: https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/proble
 9- getNode
 link: https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true
 
+/*********************************************************************** */
+10- cycleDetection (mid)
+link: https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem?isFullScreen=true
+
+/*********************************************************************** */
+11 - addTwoNumbers (mid)
+link: https://leetcode.com/problems/add-two-numbers/description/?envType=problem-list-v2&envId=linked-list
+
