@@ -370,4 +370,45 @@ let l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
 l1 = new ListNode(1, new ListNode(0, new ListNode(0, new ListNode(0, new ListNode(0, new ListNode(1, new ListNode(1, new ListNode(1))))))));
 l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
 
-console.log(addTwoNumbers(l1, l2));
+// console.log(addTwoNumbers(l1, l2));
+
+// *******************************************************************
+// 12- Remove Nth Node From End of List
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number} n
+ * @return {ListNode}
+ */
+var removeNthFromEnd = function(head, n) {
+  let listCount = 0;
+  let curr = head;
+  while(curr){
+    listCount++
+    curr = curr.next
+  }
+  if(listCount===1){
+    return head=null
+  }
+  prevIndex=listCount-n-1
+  if(prevIndex===-1){
+    return head.next
+  }
+  curr = head
+  for (let i = 0; i < prevIndex; i++) {
+    curr = curr.next
+  }
+  curr.next = curr.next.next;
+  return head
+};
+
+head = new ListNode(5, new ListNode(6, new ListNode(4)));
+head = new ListNode(5, new ListNode(6));
+// console.log(removeNthFromEnd(head, 1));

@@ -1,43 +1,59 @@
 1- insertNodeAtTail
+level: (Easy)
 link: https://www.hackerrank.com/challenges/insert-a-node-at-the-tail-of-a-linked-list/problem?isFullScreen=true
 
 /*********************************************************************** */
 2- insertNodeAtHead
+level: (Easy)
 link: https://www.hackerrank.com/challenges/insert-a-node-at-the-head-of-a-linked-list/problem?isFullScreen=true
 
 /*********************************************************************** */
 3- insertNodeAtPosition
+level: (Easy)
 link: https://www.hackerrank.com/challenges/insert-a-node-at-a-specific-position-in-a-linked-list/problem?isFullScreen=true
 
 /*********************************************************************** */
 4- deleteNode
+level: (Easy)
 link: https://www.hackerrank.com/challenges/delete-a-node-from-a-linked-list/problem?isFullScreen=true
 
 /*********************************************************************** */
 5- reversePrint
+level: (Easy)
 link: https://www.hackerrank.com/challenges/print-the-elements-of-a-linked-list-in-reverse/problem?isFullScreen=true
 
 /*********************************************************************** */
 6- reverse
+level: (Easy)
 link: https://www.hackerrank.com/challenges/reverse-a-linked-list/problem?isFullScreen=true
 
 /*********************************************************************** */
 7- CompareLists
+level: (Easy)
 link: https://www.hackerrank.com/challenges/compare-two-linked-lists/problem?isFullScreen=true
 
 /*********************************************************************** */
 8- mergeLists
+level: (Easy)
 link: https://www.hackerrank.com/challenges/merge-two-sorted-linked-lists/problem?isFullScreen=true
 
 /*********************************************************************** */
 9- getNode
+level: (Easy)
 link: https://www.hackerrank.com/challenges/get-the-value-of-the-node-at-a-specific-position-from-the-tail/problem?isFullScreen=true
 
 /*********************************************************************** */
-10- cycleDetection (mid)
+10- cycleDetection 
+level: (Mid)
 link: https://www.hackerrank.com/challenges/detect-whether-a-linked-list-contains-a-cycle/problem?isFullScreen=true
 
 /*********************************************************************** */
-11 - addTwoNumbers (mid)
+11 - addTwoNumbers 
+level: (Mid)
+link: https://leetcode.com/problems/add-two-numbers/description/?envType=problem-list-v2&envId=linked-list
+
+/*********************************************************************** */
+12- Remove Nth Node From End of List 
+level: (Mid)
 link: https://leetcode.com/problems/add-two-numbers/description/?envType=problem-list-v2&envId=linked-list
 
