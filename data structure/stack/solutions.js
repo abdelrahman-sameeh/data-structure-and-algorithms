@@ -212,8 +212,8 @@ function largestRectangle(arr) {
 // 5- Simple Text Editor
 
 function processData(input) {
-  // الجزء دا عشان موقع hackerrank 
-  // انما احنا بنبعت ك array directly 
+  // الجزء دا عشان موقع hackerrank
+  // انما احنا بنبعت ك array directly
   //----------------------------
   // input = input.split('\n')
   //----------------------------
@@ -247,7 +247,6 @@ function processData(input) {
       }
     }
   }
-
 }
 
 // processData(["1 abc", "3 3", "2 3", "1 xy", "3 2", "4", "4", "3 1"]);
@@ -260,30 +259,29 @@ function processData(input) {
 
 function poisonousPlants(arr) {
   function main(arr, numberOfDays = 0) {
-    const stack = [arr[0]]; 
+    const stack = [arr[0]];
     let good = true;
 
     for (let i = 1; i < arr.length; i++) {
       if (arr[i] <= arr[i - 1]) {
-        stack.push(arr[i]); 
+        stack.push(arr[i]);
       } else {
-        good = false; 
+        good = false;
       }
     }
 
     if (good) {
       return numberOfDays;
     } else {
-      return main(stack, numberOfDays + 1); 
+      return main(stack, numberOfDays + 1);
     }
   }
 
   return main(arr);
 }
 
-
 /**
- * @@CHAT_GPT_SOLUTION 
+ * @@CHAT_GPT_SOLUTION
  * @NOT_ACCEPTED
  */
 
@@ -291,7 +289,7 @@ function poisonousPlants(arr) {
   let days = 0;
 
   while (true) {
-    const survivors = [arr[0]]; 
+    const survivors = [arr[0]];
     let plantsDied = false;
 
     for (let i = 1; i < arr.length; i++) {
@@ -313,12 +311,117 @@ function poisonousPlants(arr) {
   return days;
 }
 
-
-
-
 // console.log(poisonousPlants([6, 5, 8, 4, 7, 10, 9]));
 // console.log(poisonousPlants([3, 6, 2, 7, 5]));
 // console.log(poisonousPlants([1, 1, 1, 1, 1]));
 
+/*********************************************************************** */
+// 7- Simplify Path >> (Mid level)
+
+// solution 1
+var simplifyPath = function (path) {
+  path = path.split("/").filter((item) => item != "" && item != ".");
+  let stack = [];
+  for (const item of path) {
+    if (item === "..") {
+      stack.pop();
+    } else {
+      stack.push(item);
+    }
+  }
+  return stack.length ? `/${stack.join("/")}` : "/";
+};
+
+// solution 2
+var simplifyPath = function (path) {
+  path = path.split("/").filter((item) => item != "" && item != ".");
+  path.push("/");
+
+  let i = 0;
+  while (true) {
+    if (path[i] === "/") break;
+    if (path[i] === ".." && path[i - 1]) {
+      path.splice(i - 1, 2);
+      i--;
+    } else if (path[i] === ".." && !path[i - 1]) {
+      path.splice(i, 1);
+    } else {
+      i++;
+    }
+  }
+  path.pop();
+  return path.length ? `/${path.join("/")}` : "/";
+};
+
+// console.log(simplifyPath("/.../a/../b/c/../d/./"));
+// console.log(simplifyPath("/../b/../../"));
+// console.log(simplifyPath("/..//../"));
+
+/*********************************************************************** */
+// 8- Reorder List >> (Mid level)
+
+//  Definition for singly-linked list.
+function ListNode(val, next) {
+  this.val = val === undefined ? 0 : val;
+  this.next = next === undefined ? null : next;
+}
+/*
+ * @param {ListNode} head
+ * @return {void} Do not return anything, modify head in-place instead.
+ */
+var reorderList = function (head) {
+  let curr = head,
+    targetIndex = 1,
+    listCount = 0,
+    itr = 0;
+  while (true) {
+    if (
+      (targetIndex === listCount && listCount % 2 != 0) ||
+      (targetIndex - 1 === listCount && targetIndex!=1 && listCount % 2 == 0)
+    ) {      
+      break;
+    }
+
+    while(curr){
+      curr=curr.next;
+      if (itr == 0) {
+        listCount++;
+      }
+    }
+    itr = 1;
+    if(listCount===1 || listCount===2){
+      return head
+    }
+
+    curr = head;
+    let lastNode = null;
+    while (curr.next&&curr.next.next) {
+      curr = curr.next;
+    }
+    lastNode = curr.next;
+    curr.next = null;
+    curr = head;
 
 
+    let updatedHead = head,
+      prevTarget = null;
+
+    for (let i = 0; i < targetIndex; i++) {
+      if (i === targetIndex - 1) {
+        prevTarget = updatedHead;
+        break;
+      }
+      updatedHead = updatedHead.next;
+    }
+    lastNode.next = prevTarget.next;
+    prevTarget.next = lastNode;
+    targetIndex += 2;
+  }
+
+  return head;
+};
+
+let head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4))));
+// head = new ListNode(1, new ListNode(2));
+
+console.log(reorderList(head));
