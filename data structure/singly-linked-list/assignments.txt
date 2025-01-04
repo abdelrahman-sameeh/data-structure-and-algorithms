@@ -57,3 +57,13 @@ link: https://leetcode.com/problems/add-two-numbers/description/?envType=problem
 level: (Mid)
 link: https://leetcode.com/problems/add-two-numbers/description/?envType=problem-list-v2&envId=linked-list
 
+/*********************************************************************** */
+13- Swap Nodes in Pairs
+level: (Mid)
+link: https://leetcode.com/problems/swap-nodes-in-pairs/description/?envType=problem-list-v2&envId=linked-list
+
+/*********************************************************************** */
+14- Rotate List
+level: (Mid)
+link: https://leetcode.com/problems/rotate-list/description/?envType=problem-list-v2&envId=linked-list
+

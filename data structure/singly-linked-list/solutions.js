@@ -302,29 +302,27 @@ function ListNode(val, next) {
  * @return {ListNode}
  */
 
-
-function addTwoBigString(n1='', n2='') {
+function addTwoBigString(n1 = "", n2 = "") {
   let carry = 0;
   let result = [];
-  
-  if(n1.length < n2.length){
-    n1= n1.padStart(n2.length, '0')
+
+  if (n1.length < n2.length) {
+    n1 = n1.padStart(n2.length, "0");
   }
-  if(n2.length < n1.length){
-    n2= n2.padStart(n1.length, '0')
+  if (n2.length < n1.length) {
+    n2 = n2.padStart(n1.length, "0");
   }
 
   for (let i = n1.length - 1; i >= 0; i--) {
     const sum = parseInt(n1[i]) + parseInt(n2[i]) + carry;
-    result.unshift(sum % 10); 
-    carry = Math.floor(sum / 10); 
+    result.unshift(sum % 10);
+    carry = Math.floor(sum / 10);
   }
 
   if (carry > 0) result.unshift(carry);
 
-  return result.join(''); 
+  return result.join("");
 }
-
 
 const addTwoNumbers = function (l1, l2) {
   let l1Str = "",
@@ -345,29 +343,43 @@ const addTwoNumbers = function (l1, l2) {
   }
 
   let head;
-  let result = addTwoBigString(l1Str.split('').reverse().join(''), l2Str.split('').reverse().join(''))
-  result = result.toString().split('').reverse().join('')
+  let result = addTwoBigString(
+    l1Str.split("").reverse().join(""),
+    l2Str.split("").reverse().join("")
+  );
+  result = result.toString().split("").reverse().join("");
 
   for (const item of result.toString()) {
     const newNode = new ListNode(+item);
-    if(!head){
-      head=newNode
-    }else{
+    if (!head) {
+      head = newNode;
+    } else {
       let current = head;
-      while(current.next){
-        current = current.next
+      while (current.next) {
+        current = current.next;
       }
-      current.next = newNode
+      current.next = newNode;
     }
   }
-  return head
+  return head;
 };
 
 let l1 = new ListNode(2, new ListNode(4, new ListNode(3)));
 let l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
 
-
-l1 = new ListNode(1, new ListNode(0, new ListNode(0, new ListNode(0, new ListNode(0, new ListNode(1, new ListNode(1, new ListNode(1))))))));
+l1 = new ListNode(
+  1,
+  new ListNode(
+    0,
+    new ListNode(
+      0,
+      new ListNode(
+        0,
+        new ListNode(0, new ListNode(1, new ListNode(1, new ListNode(1))))
+      )
+    )
+  )
+);
 l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
 
 // console.log(addTwoNumbers(l1, l2));
@@ -387,28 +399,132 @@ l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
  * @param {number} n
  * @return {ListNode}
  */
-var removeNthFromEnd = function(head, n) {
+var removeNthFromEnd = function (head, n) {
   let listCount = 0;
   let curr = head;
-  while(curr){
-    listCount++
-    curr = curr.next
+  while (curr) {
+    listCount++;
+    curr = curr.next;
   }
-  if(listCount===1){
-    return head=null
+  if (listCount === 1) {
+    return (head = null);
   }
-  prevIndex=listCount-n-1
-  if(prevIndex===-1){
-    return head.next
+  prevIndex = listCount - n - 1;
+  if (prevIndex === -1) {
+    return head.next;
   }
-  curr = head
+  curr = head;
   for (let i = 0; i < prevIndex; i++) {
-    curr = curr.next
+    curr = curr.next;
   }
   curr.next = curr.next.next;
-  return head
+  return head;
 };
 
 head = new ListNode(5, new ListNode(6, new ListNode(4)));
 head = new ListNode(5, new ListNode(6));
 // console.log(removeNthFromEnd(head, 1));
+
+// *******************************************************************
+// 13- Swap Nodes in Pairs
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var swapPairs = function (head) {
+  if (!head || !head.next) {
+    return head;
+  }
+
+  let firstNode = head;
+  let secondNode = head.next;
+
+  firstNode.next = swapPairs(secondNode.next);
+
+  secondNode.next = firstNode;
+
+  return secondNode;
+};
+
+head = new ListNode(
+  1,
+  new ListNode(
+    2,
+    new ListNode(3, new ListNode(4, new ListNode(5, new ListNode(6))))
+  )
+);
+
+// console.log(swapPairs(head));
+
+// *******************************************************************
+// 14- Rotate List
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode}
+ */
+
+// bad solution BigO(n^2)
+// var rotateRight = function(head, k) {
+//   if(!head || !head.next) return head
+//   function rotate(head){
+//     let lastEle = null
+//     let curr1 = head;
+//     let curr2 = head;
+//     while(curr1?.next?.next){
+//       curr1 = curr1?.next
+//     }
+//     lastEle = curr1.next
+//     curr1.next = null
+//     lastEle.next = curr2
+//     return lastEle
+//   }
+
+//   while(k--){
+//     head=rotate(head)
+//   }
+
+//   return head
+// };
+
+var rotateRight = function (head, k) {
+  if (!head || !head.next) return head;
+
+  // get length of Linked list
+  let length = 0;
+  let curr = head;
+  while (curr) {
+    curr = curr.next;
+    length++;
+  }
+  let targetNodeIndex = k % length;
+
+  if(targetNodeIndex===0)return head  
+
+  // get prev node 
+  let prevTarget = head;
+  length--;
+  while (length - targetNodeIndex) {
+    length--;
+    prevTarget = prevTarget.next;
+  }
+
+  // get last element in target node and make connections 
+  let target = prevTarget.next;
+  prevTarget.next = null;
+  let lastEme = target;
+  while (lastEme && lastEme.next) {
+    lastEme = lastEme.next;
+  }
+  lastEme.next = head;
+  head = target;
+
+  return head;
+};
+
+head = new ListNode(
+  1,
+  new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))
+);
+
+console.log(rotateRight(head, 200000));
