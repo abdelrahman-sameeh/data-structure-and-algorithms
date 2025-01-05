@@ -67,3 +67,13 @@ link: https://leetcode.com/problems/swap-nodes-in-pairs/description/?envType=pro
 level: (Mid)
 link: https://leetcode.com/problems/rotate-list/description/?envType=problem-list-v2&envId=linked-list
 
+/*********************************************************************** */
+15- Remove Duplicates from Sorted List II
+level: (Mid)
+link: https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/description/?envType=problem-list-v2&envId=linked-list
+
+/*********************************************************************** */
+16- Partition List
+level: (Mid)
+link: https://leetcode.com/problems/partition-list/description/?envType=problem-list-v2&envId=linked-list
+

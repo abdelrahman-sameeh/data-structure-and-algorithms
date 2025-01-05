@@ -1,3 +1,16 @@
+helper_function:
+function printLinkedList(head) {
+  let current = head; // بداية من العقدة الرأسية
+  const result = []; // مصفوفة لتجميع القيم
+
+  while (current) {
+    result.push(current.val); // أضف القيمة الحالية إلى المصفوفة
+    current = current.next; // انتقل إلى العقدة التالية
+  }
+
+  console.log(result.join(" -> ")); // طباعة القيم بشكل مرتب
+} 
+
 // 1- insertNodeAtTail
 function insertNodeAtTail(head, data) {
   const newNode = new SinglyLinkedListNode(data);
@@ -499,9 +512,9 @@ var rotateRight = function (head, k) {
   }
   let targetNodeIndex = k % length;
 
-  if(targetNodeIndex===0)return head  
+  if (targetNodeIndex === 0) return head;
 
-  // get prev node 
+  // get prev node
   let prevTarget = head;
   length--;
   while (length - targetNodeIndex) {
@@ -509,7 +522,7 @@ var rotateRight = function (head, k) {
     prevTarget = prevTarget.next;
   }
 
-  // get last element in target node and make connections 
+  // get last element in target node and make connections
   let target = prevTarget.next;
   prevTarget.next = null;
   let lastEme = target;
@@ -527,4 +540,142 @@ head = new ListNode(
   new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))
 );
 
-console.log(rotateRight(head, 200000));
+// console.log(rotateRight(head, 200000));
+
+// *******************************************************************
+// 15- Remove Duplicates from Sorted List II
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+
+var deleteDuplicates = function (head) {
+  if (!head) return null;
+
+  let dummy = new ListNode(0, head);
+  let prev = dummy;
+  let curr = head;
+
+  while (curr && curr.next) {
+    if (curr.val === curr.next.val) {
+      let val = curr.val;
+      while (curr && curr.val === val) {
+        curr = curr.next;
+      }
+      prev.next = curr;
+    } else {
+      prev = curr;
+      curr = curr.next;
+    }
+  }
+
+  return dummy.next;
+};
+
+// head = new ListNode(
+//   1,
+//   new ListNode(
+//     2,
+//     new ListNode(
+//       3,
+//       new ListNode(3, new ListNode(4, new ListNode(4, new ListNode(5))))
+//     )
+//   )
+// );
+head = new ListNode(
+  1,
+  new ListNode(
+    1,
+    new ListNode(2, new ListNode(3, new ListNode(3, new ListNode(3))))
+  )
+);
+
+// console.log(deleteDuplicates(head));
+
+// *******************************************************************
+// 16- Partition List
+
+/**
+ * @param {ListNode} head
+ * @param {number} x
+ * @return {ListNode}
+ */
+
+// NOT WORK
+// var partition = function (head, x) {
+//   if (!head) return head;
+
+//   let prev = head;
+//   let curr = head;
+//   let foundPrev = false;
+//   while (curr&&curr.next) {
+//     if (prev.next.val >= x && foundPrev===false) {
+//       foundPrev = true;
+//       continue
+//     }
+//     if (foundPrev === false) {
+//       prev = prev.next;
+//       curr = curr.next;
+//       continue
+//     }
+//     if(curr&&curr?.next?.val>=x){
+//       curr=curr.next
+//     }else if(curr&&curr?.next?.val<x){
+//       let tmp = curr.next;
+//       curr.next = tmp.next;
+//       tmp.next=prev.next;
+//       prev.next = tmp
+//     }
+//   }
+//   return prev 
+// };
+
+
+
+
+
+// WORK
+var partition = function (head, x) {
+  if (!head) return head;
+
+  let dummy1 = new ListNode(0); 
+  let dummy2 = new ListNode(0); 
+  let less = dummy1;
+  let greater = dummy2;
+
+  while (head) {
+    if (head.val < x) {
+      less.next = head; 
+      less = less.next;
+    } else {
+      greater.next = head; 
+      greater = greater.next;
+    }
+    head = head.next;
+  }
+
+  greater.next = null;
+  less.next = dummy2.next;
+
+  return dummy1.next; 
+};
+
+
+head = new ListNode(
+  2,
+  new ListNode(
+    1,
+    new ListNode(
+      4,
+      new ListNode(3, new ListNode(2, new ListNode(5, new ListNode(2))))
+    )
+  )
+);
+// head = new ListNode(
+//   2,
+//   new ListNode(
+//     1,
+//   )
+// );
+
+console.log(partition(head, 3));
