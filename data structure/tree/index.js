@@ -12,6 +12,10 @@ class BinaryTree {
     this.root = new Node(rootValue);
   }
 
+  getRoot(){
+    return this.root
+  }
+
   isEmpty() {
     return !this.root;
   }
@@ -44,30 +48,104 @@ class BinaryTree {
       return this.search(value, root.right);
     }
   }
-  depth() {}
-
-  preOrderTraversal() {}
-  inOrderTraversal() {}
-  postOrderTraversal() {}
-  breadthFirstTraversal() {}
 
   remove(node) {}
+
+
+  preOrderTraversal() {
+    function main(root, arr) {
+      if (root) {
+        arr.push(root.value);
+        if (root.left) {
+          main(root.left, arr);
+        }
+        if (root.right) {
+          main(root.right, arr);
+        }
+      }
+    }
+    let arr = [];
+    main(this.root, arr);
+    return arr.join(" -> ");
+  }
+
+  inOrderTraversal() {
+    function main(root, arr) {
+      if (root) {
+        if (root.left) {
+          main(root.left, arr);
+        }
+        arr.push(root.value);
+        if (root.right) {
+          main(root.right, arr);
+        }
+      }
+    }
+    let arr = [];
+    main(this.root, arr);
+    return arr.join(" -> ");
+  }
+
+  postOrderTraversal() {
+    function main(root, arr) {
+      if (root) {
+        main(root.left, arr);
+        main(root.right, arr);
+        arr.push(root.value);
+      }
+    }
+    let arr = [];
+    main(this.root, arr);
+    return arr.join(" -> ");
+  }
+
+  breadthFirstTraversal(root = this.root) {
+    let queue = [];
+    const arr = []
+    queue.push(root);
+    while (queue.length) {
+      let curr = queue.shift();
+      arr.push(curr.value)
+      if (curr.left) {
+        queue.push(curr.left);
+      }
+      if (curr.right) {
+        queue.push(curr.right);
+      }
+    }
+    return arr.join(" -> ");
+  }
+
 }
 
 const bt = new BinaryTree(15);
 
-bt.remove(15);
-// console.log(bt.isEmpty());
+// bt.remove(15);
+// // console.log(bt.isEmpty());
 
 bt.add(5);
 bt.add(3);
 bt.add(6);
+bt.add(7);
+bt.add(8);
 bt.add(18);
 bt.add(16);
 bt.add(20);
 
-console.log(bt.getSize());
+
+// console.log(bt.getSize());
 // console.log(bt);
 
 // console.log(bt.search(20));
 // console.log(bt.search(21));
+
+// console.log(bt.preOrderTraversal());
+// console.log(bt.inOrderTraversal());
+// console.log(bt.postOrderTraversal());
+
+// console.log(bt.breadthFirstTraversal());
+
+// bt.remove(15);
+
+
+

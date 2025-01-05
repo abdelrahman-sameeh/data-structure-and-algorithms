@@ -62,9 +62,6 @@
       // حساب عدد العقد في الشجرة
       size(): number;
 
-      // حساب ارتفاع الشجرة
-      depth(): number;
-
       // استعراض الشجرة بطريقة Pre-order
       preOrderTraversal(): void;
 
