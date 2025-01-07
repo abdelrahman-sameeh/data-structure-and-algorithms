@@ -1,5 +1,4 @@
-helper_function:
-function printLinkedList(head) {
+helper_function: function printLinkedList(head) {
   let current = head; // بداية من العقدة الرأسية
   const result = []; // مصفوفة لتجميع القيم
 
@@ -9,7 +8,7 @@ function printLinkedList(head) {
   }
 
   console.log(result.join(" -> ")); // طباعة القيم بشكل مرتب
-} 
+}
 
 // 1- insertNodeAtTail
 function insertNodeAtTail(head, data) {
@@ -148,8 +147,7 @@ function reverse(head) {
     current = next;
   }
 
-  head = prev;
-  return head;
+  return prev;
 }
 
 // console.log(reverse(head));
@@ -627,28 +625,24 @@ head = new ListNode(
 //       prev.next = tmp
 //     }
 //   }
-//   return prev 
+//   return prev
 // };
-
-
-
-
 
 // WORK
 var partition = function (head, x) {
   if (!head) return head;
 
-  let dummy1 = new ListNode(0); 
-  let dummy2 = new ListNode(0); 
+  let dummy1 = new ListNode(0);
+  let dummy2 = new ListNode(0);
   let less = dummy1;
   let greater = dummy2;
 
   while (head) {
     if (head.val < x) {
-      less.next = head; 
+      less.next = head;
       less = less.next;
     } else {
-      greater.next = head; 
+      greater.next = head;
       greater = greater.next;
     }
     head = head.next;
@@ -657,9 +651,8 @@ var partition = function (head, x) {
   greater.next = null;
   less.next = dummy2.next;
 
-  return dummy1.next; 
+  return dummy1.next;
 };
-
 
 head = new ListNode(
   2,
@@ -678,4 +671,106 @@ head = new ListNode(
 //   )
 // );
 
-console.log(partition(head, 3));
+// console.log(partition(head, 3));
+
+// *******************************************************************
+// 17- Reverse Linked List II
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = val === undefined ? 0 : val;
+ *     this.next = next === undefined ? null : next;
+ * }
+ */
+
+/**
+ * @param {ListNode} head
+ * @param {number} left
+ * @param {number} right
+ * @return {ListNode}
+ */
+var reverseBetween = function (head, left, right) {
+  if (!head || left >= right) return head;
+
+  let dummy = new ListNode(0, head);
+  let prev = dummy;
+
+  for (let i = 1; i < left; i++) {
+    prev = prev.next;
+  }
+
+  let current = prev.next;
+  let next = null;
+  let prevReversed = null;
+
+  for (let i = 0; i <= right - left; i++) {
+    next = current.next;
+    current.next = prevReversed;
+    prevReversed = current;
+    current = next;
+  }
+
+  prev.next.next = current;
+  prev.next = prevReversed;
+
+  return dummy.next;
+};
+
+head = new ListNode(
+  1,
+  new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5))))
+);
+
+// console.log(printLinkedList(reverseBetween(head, 2, 4)));
+
+// *******************************************************************
+// 18- Convert Sorted List to Binary Search Tree
+
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
+
+/**
+ * @param {ListNode} head
+ * @return {TreeNode}
+ */
+
+
+var sortedListToBST = function (head) {
+  function findMiddle(left, right) {
+    let slow = left;
+    let fast = left;
+
+    while (fast !== right && fast.next !== right) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    return slow;
+  }
+
+  function buildTree(left, right) {
+    if (left === right) return null;
+
+    const mid = findMiddle(left, right);
+    const root = new TreeNode(mid.val);
+
+    root.left = buildTree(left, mid); 
+    root.right = buildTree(mid.next, right); 
+
+    return root;
+  }
+
+  return buildTree(head, null);
+};
+
+
+head = new ListNode(
+  -10,
+  new ListNode(-3, new ListNode(0, new ListNode(5, new ListNode(9))))
+);
+
+console.log(sortedListToBST(head));
+

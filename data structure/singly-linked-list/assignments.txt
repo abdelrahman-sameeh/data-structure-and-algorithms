@@ -77,3 +77,13 @@ link: https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/descri
 level: (Mid)
 link: https://leetcode.com/problems/partition-list/description/?envType=problem-list-v2&envId=linked-list
 
+/*********************************************************************** */
+17- Reverse Linked List II
+level: (Mid)
+link: https://leetcode.com/problems/reverse-linked-list-ii/description/?envType=problem-list-v2&envId=linked-list
+
+/*********************************************************************** */
+18- Convert Sorted List to Binary Search Tree
+level: (Mid)
+link: https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/?envType=problem-list-v2&envId=linked-list
+
