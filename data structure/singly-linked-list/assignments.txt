@@ -87,3 +87,8 @@ link: https://leetcode.com/problems/reverse-linked-list-ii/description/?envType=
 level: (Mid)
 link: https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/?envType=problem-list-v2&envId=linked-list
 
+/*********************************************************************** */
+19-  Flatten Binary Tree to Linked List
+level: (Mid)
+link: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/description/?envType=problem-list-v2&envId=linked-list
+

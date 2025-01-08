@@ -772,5 +772,50 @@ head = new ListNode(
   new ListNode(-3, new ListNode(0, new ListNode(5, new ListNode(9))))
 );
 
-console.log(sortedListToBST(head));
+// console.log(sortedListToBST(head));
+
+// *******************************************************************
+// 19- Flatten Binary Tree to Linked List
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {void} Do not return anything, modify root in-place instead.
+ */
+
+var flatten = function(root) {
+  let prev = null;
+
+  function preOrder(node) {
+    if (!node) return;
+
+    preOrder(node.right);
+    preOrder(node.left);
+
+    // Modify the current node
+    node.right = prev;
+    node.left = null;
+
+    // Update `prev` to the current node
+    prev = node;
+  }
+
+  preOrder(root);
+};
+
+let tree = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(5, null, new TreeNode(6)))
+
+// console.log(flatten(tree));
+
+// *******************************************************************
+// 20- 
+
+
 
