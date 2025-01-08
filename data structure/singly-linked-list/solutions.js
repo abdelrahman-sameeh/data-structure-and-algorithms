@@ -1,4 +1,6 @@
-helper_function: function printLinkedList(head) {
+
+// Helper Functions
+function printLinkedList(head) {
   let current = head; // بداية من العقدة الرأسية
   const result = []; // مصفوفة لتجميع القيم
 
@@ -9,6 +11,21 @@ helper_function: function printLinkedList(head) {
 
   console.log(result.join(" -> ")); // طباعة القيم بشكل مرتب
 }
+
+function printLevels(root) {
+  let node = root;
+  while (node) {
+    let curr = node;
+    let level = [];
+    while (curr) {
+      level.push(curr.val);
+      curr = curr.next;
+    }
+    console.log(level.join(" -> ") + " -> null");
+    node = node.left;
+  }
+}
+
 
 // 1- insertNodeAtTail
 function insertNodeAtTail(head, data) {
@@ -738,7 +755,6 @@ function TreeNode(val, left, right) {
  * @return {TreeNode}
  */
 
-
 var sortedListToBST = function (head) {
   function findMiddle(left, right) {
     let slow = left;
@@ -757,15 +773,14 @@ var sortedListToBST = function (head) {
     const mid = findMiddle(left, right);
     const root = new TreeNode(mid.val);
 
-    root.left = buildTree(left, mid); 
-    root.right = buildTree(mid.next, right); 
+    root.left = buildTree(left, mid);
+    root.right = buildTree(mid.next, right);
 
     return root;
   }
 
   return buildTree(head, null);
 };
-
 
 head = new ListNode(
   -10,
@@ -790,7 +805,7 @@ head = new ListNode(
  * @return {void} Do not return anything, modify root in-place instead.
  */
 
-var flatten = function(root) {
+var flatten = function (root) {
   let prev = null;
 
   function preOrder(node) {
@@ -810,12 +825,88 @@ var flatten = function(root) {
   preOrder(root);
 };
 
-let tree = new TreeNode(1, new TreeNode(2, new TreeNode(3), new TreeNode(4)), new TreeNode(5, null, new TreeNode(6)))
+let tree = new TreeNode(
+  1,
+  new TreeNode(2, new TreeNode(3), new TreeNode(4)),
+  new TreeNode(5, null, new TreeNode(6))
+);
 
 // console.log(flatten(tree));
 
 // *******************************************************************
-// 20- 
+// 20- Populating Next Right Pointers in Each Node
+
+function _Node(val, left, right, next) {
+  this.val = val === undefined ? null : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+  this.next = next === undefined ? null : next;
+}
+
+/**
+ * @param {_Node} root
+ * @return {_Node}
+ */
+var connect = function (root) {
+  if (!root) return null;
+  const levels = {};
+
+  function levelOrder(head, level) {
+    if (!head) return;
+
+    if (!levels[level]) levels[level] = [];
+    levels[level].push(head);
+
+    levelOrder(head.left, level + 1);
+    levelOrder(head.right, level + 1);
+  }
+
+  levelOrder(root, 0);
+
+  Object.values(levels).map((level) => {
+    return level.map((node, idx) => (node.next = level[idx + 1] || null));
+  });
+  return root
+};
+
+// GPT Solution
+// var connect = function (root) {
+//   if (!root) return null; // إذا كانت الشجرة فارغة
+
+//   let queue = [root]; // قائمة انتظار تبدأ بالجذر
+
+//   while (queue.length > 0) {
+//     let levelSize = queue.length; // عدد العقد في هذا المستوى
+
+//     // مرر عبر العقد في المستوى الحالي
+//     for (let i = 0; i < levelSize; i++) {
+//       let node = queue.shift(); // استخرج العقدة الحالية
+
+//       // اربط العقدة بالعقدة التالية إذا لم تكن الأخيرة في المستوى
+//       if (i < levelSize - 1) {
+//         node.next = queue[0];
+//       }
+
+//       // أضف الأبناء إلى قائمة الانتظار
+//       if (node.left) queue.push(node.left);
+//       if (node.right) queue.push(node.right);
+//     }
+//   }
+
+//   return root;
+// };
+
+
+
+tree = new _Node(
+  1,
+  new _Node(2, new _Node(3), new _Node(4)),
+  new _Node(5, new _Node(6))
+);
+
+
+// console.log(printLevels(connect(tree)));
+
 
 
 
