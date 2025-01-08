@@ -12,8 +12,8 @@ class BinaryTree {
     this.root = new Node(rootValue);
   }
 
-  getRoot(){
-    return this.root
+  getRoot() {
+    return this.root;
   }
 
   isEmpty() {
@@ -49,8 +49,33 @@ class BinaryTree {
     }
   }
 
-  remove(node) {}
+  min(root = this.root) {
+    if (!root.left) return root.value;
+    else return this.min(root.left);
+  }
 
+  remove(value) {
+    function removeNode(root, value) {
+      if (!root) return root;
+      if (value > root.value) {
+        root.right = removeNode(root.right, value);
+      } else if (value < root.value) {
+        root.right = removeNode(root.right, value);
+      } else {
+        if (!root.left && !root.right) return null;
+        if (!root.left) {
+          return root.right;
+        } else if (!root.right) {
+          return root.left;
+        } else {
+          root.value = this.min(root.right)
+          root.right = removeNode(this.root, root.value)
+        }
+        return root
+      }
+    }
+    this.root = removeNode(this.root, value);
+  }
 
   preOrderTraversal() {
     function main(root, arr) {
@@ -101,11 +126,11 @@ class BinaryTree {
 
   breadthFirstTraversal(root = this.root) {
     let queue = [];
-    const arr = []
+    const arr = [];
     queue.push(root);
     while (queue.length) {
       let curr = queue.shift();
-      arr.push(curr.value)
+      arr.push(curr.value);
       if (curr.left) {
         queue.push(curr.left);
       }
@@ -115,13 +140,12 @@ class BinaryTree {
     }
     return arr.join(" -> ");
   }
-
 }
 
 const bt = new BinaryTree(15);
 
 // bt.remove(15);
-// // console.log(bt.isEmpty());
+// console.log(bt.isEmpty());
 
 bt.add(5);
 bt.add(3);
@@ -132,6 +156,9 @@ bt.add(18);
 bt.add(16);
 bt.add(20);
 
+console.log(bt.min());
+console.log(bt.remove(7));
+console.log(bt.breadthFirstTraversal());
 
 // console.log(bt.getSize());
 // console.log(bt);
@@ -146,6 +173,3 @@ bt.add(20);
 // console.log(bt.breadthFirstTraversal());
 
 // bt.remove(15);
-
-
-
