@@ -2,3 +2,5 @@
 link: https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/?envType=problem-list-v2&envId=binary-search-tree
 
 /*********************************************************************** */
+2- Find Mode in Binary Search Tree
+link: https://leetcode.com/problems/find-mode-in-binary-search-tree/description/?envType=problem-list-v2&envId=binary-search-tree
