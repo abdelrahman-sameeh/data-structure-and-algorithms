@@ -20,12 +20,3 @@ link: https://www.hackerrank.com/challenges/simple-text-editor/problem?isFullScr
 /*********************************************************************** */
 6- Poisonous Plants
 link: https://www.hackerrank.com/challenges/poisonous-plants/problem?isFullScreen=false
-
-/*********************************************************************** */
-7- Simplify Path >> (Mid level)
-link: https://leetcode.com/problems/simplify-path/description/?envType=problem-list-v2&envId=stack
-
-/*********************************************************************** */
-// 8- Reorder List >> (Mid level)
-link: https://leetcode.com/problems/reorder-list/description/?envType=problem-list-v2&envId=stack
-

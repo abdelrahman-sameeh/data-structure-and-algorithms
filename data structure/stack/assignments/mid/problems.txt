@@ -1,0 +1,17 @@
+1- Simplify Path >> (Mid level)
+link: https://leetcode.com/problems/simplify-path/description/?envType=problem-list-v2&envId=stack
+
+/*********************************************************************** */
+2- Reorder List >> (Mid level)
+link: https://leetcode.com/problems/reorder-list/description/?envType=problem-list-v2&envId=stack
+
+/*********************************************************************** */
+
+3- Evaluate Reverse Polish Notation
+link: https://leetcode.com/problems/evaluate-reverse-polish-notation/description/?envType=problem-list-v2&envId=stack
+***************************************************************
+
+4- Min Stack
+link: https://leetcode.com/problems/min-stack/description/?envType=problem-list-v2&envId=stack
+***************************************************************
+
