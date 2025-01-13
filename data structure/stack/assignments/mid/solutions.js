@@ -231,7 +231,7 @@ MinStack.prototype.top = function () {
  */
 MinStack.prototype.getMin = function () {
   let dummy = JSON.parse(JSON.stringify(this.stack));
-  return dummy.sort((a, b)=>a-b)[0]
+  return dummy.sort((a, b) => a - b)[0];
 };
 
 var obj = new MinStack();
@@ -239,4 +239,233 @@ obj.push(5);
 obj.push(4);
 obj.push(6);
 
-console.log(obj.getMin());
+// console.log(obj.getMin());
+
+/*********************************************************************** */
+// 5- Binary Search Tree Iterator
+
+//  * Definition for a binary tree node.
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
+
+/**
+ * @param {TreeNode} root
+ */
+var BSTIterator = function (root) {
+  this.root = root;
+  this.iterable = [];
+  this.initial = true;
+};
+
+function inOrder(root) {
+  function main(root, arr) {
+    if (!root) return;
+    main(root.left, arr);
+    arr.push(root.val);
+    main(root.right, arr);
+    return arr;
+  }
+  let arr = [];
+  return main(root, arr);
+}
+
+/**
+ * @return {number}
+ */
+BSTIterator.prototype.next = function () {
+  if (!this.initial && !this.iterable.length) return null;
+  if (this.initial) {
+    this.initial = false;
+    this.iterable = inOrder(this.root);
+  }
+  return this.iterable.shift();
+};
+
+/**
+ * @return {boolean}
+ */
+BSTIterator.prototype.hasNext = function () {
+  if (this.initial) {
+    this.initial = false;
+    this.iterable = inOrder(this.root);
+  }
+  return this.iterable.length ? true : false;
+};
+
+// GPT Solution
+/**
+ * @param {TreeNode} root
+ */
+var BSTIterator = function (root) {
+  this.stack = [];
+  this._leftmostInorder(root);
+};
+
+/**
+ * تضيف كل العقد الفرعية الشمال للشجرة للكومة
+ * @param {TreeNode} node
+ */
+BSTIterator.prototype._leftmostInorder = function (node) {
+  while (node) {
+    this.stack.push(node);
+    node = node.left;
+  }
+};
+
+/**
+ * @return {number}
+ */
+BSTIterator.prototype.next = function () {
+  // نجيب أصغر عنصر من الشجرة (أعلى حاجة فى الكومة)
+  const topmostNode = this.stack.pop();
+
+  // لو العنصر ده له عقدة يمين، نضيف كل عقد الشمال بتاعتها
+  if (topmostNode.right) {
+    this._leftmostInorder(topmostNode.right);
+  }
+
+  return topmostNode.val;
+};
+
+/**
+ * @return {boolean}
+ */
+BSTIterator.prototype.hasNext = function () {
+  return this.stack.length > 0;
+};
+
+// Your BSTIterator object will be instantiated and called as such:
+var obj = new BSTIterator(
+  new TreeNode(
+    7,
+    new TreeNode(3),
+    new TreeNode(15, new TreeNode(9), new TreeNode(20))
+  )
+);
+// console.log(obj.next());
+// console.log(obj.next());
+// console.log(obj.next());
+// console.log(obj.next());
+// console.log(obj.hasNext());
+// console.log(obj.next());
+// console.log(obj.hasNext());
+
+// var param_2 = obj.hasNext();
+
+/*********************************************************************** */
+// 6- Basic Calculator II
+
+// Time limited Exceeded
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var calculate = function (s) {
+  let stack = [];
+  // remove white spaces
+  s = s.trim("");
+  for (const char of s) {
+    if (!stack.length) {
+      stack.push(+char);
+    } else if (char != " ") {
+      if (isNaN(char)) {
+        stack.push(char);
+      } else if (!isNaN(stack[stack.length - 1])) {
+        stack[stack.length - 1] = +`${stack[stack.length - 1]}${char}`;
+      } else if (isNaN(stack[stack.length - 1])) {
+        stack.push(+char);
+      }
+    }
+  }
+
+  // p as pointer
+  let p = 0;
+  while (p != stack.length - 1) {
+    if (stack[p] === "*") {
+      num1 = stack[p - 1];
+      num2 = stack[p + 1];
+      let result = num1 * num2;
+      stack[p - 1] = result;
+      stack.splice(p, 2);
+      p = p - 1;
+    } else if (stack[p] === "/") {
+      num1 = stack[p - 1];
+      num2 = stack[p + 1];
+      let result = Math.floor(num1 / num2);
+      stack[p - 1] = result;
+      stack.splice(p, 2);
+      p = p - 1;
+    } else {
+      p++;
+    }
+  }
+
+  if (stack.length == 1) return stack[0];
+
+  p = 0
+  while(stack.length>1){
+    if(stack[p]==="+"){
+      stack[p-1] = stack[p-1]+stack[p+1]
+      stack.splice(p, 2)
+      p--
+    }else if(stack[p]==="-"){
+      stack[p-1] = stack[p-1]-stack[p+1]
+      stack.splice(p, 2)
+      p--
+    }else{
+      p++
+    }
+  }
+  return stack[0]
+};
+
+
+
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+// GPT Solution
+var calculate = function (s) {
+  s = s.replace(/\s+/g, '');
+  
+  let stack = [];
+  let num = 0;
+  let sign = '+';
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+
+    if (!isNaN(char)) {
+      // تكوين الرقم الحالي
+      num = num * 10 + parseInt(char, 10);
+    }
+
+    if (isNaN(char) || i === s.length - 1) {
+      if (sign === '+') {
+        stack.push(num);
+      } else if (sign === '-') {
+        stack.push(-num);
+      } else if (sign === '*') {
+        stack.push(stack.pop() * num);
+      } else if (sign === '/') {
+        stack.push(Math.trunc(stack.pop() / num)); 
+      }
+
+      sign = char;
+      num = 0;
+    }
+  }
+
+  return stack.reduce((a, b) => a + b, 0);
+};
+
+
+// console.log(calculate("3+2*2"));
+// console.log(calculate(" 3/2 "));
+// console.log(calculate(" 3+55 / 2*2*2 /2 "));
+// console.log(calculate("1-1"));

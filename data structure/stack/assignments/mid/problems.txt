@@ -9,9 +9,16 @@ link: https://leetcode.com/problems/reorder-list/description/?envType=problem-li
 
 3- Evaluate Reverse Polish Notation
 link: https://leetcode.com/problems/evaluate-reverse-polish-notation/description/?envType=problem-list-v2&envId=stack
-***************************************************************
+/*********************************************************************** */
 
 4- Min Stack
 link: https://leetcode.com/problems/min-stack/description/?envType=problem-list-v2&envId=stack
-***************************************************************
+/*********************************************************************** */
 
+5- Binary Search Tree Iterator
+link: https://leetcode.com/problems/binary-search-tree-iterator/description/?envType=problem-list-v2&envId=stack
+/*********************************************************************** */
+
+6- Basic Calculator II
+link: https://leetcode.com/problems/basic-calculator-ii/description/?envType=problem-list-v2&envId=stack
+/*********************************************************************** */
