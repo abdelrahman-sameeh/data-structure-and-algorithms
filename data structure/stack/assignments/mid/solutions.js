@@ -405,25 +405,22 @@ var calculate = function (s) {
 
   if (stack.length == 1) return stack[0];
 
-  p = 0
-  while(stack.length>1){
-    if(stack[p]==="+"){
-      stack[p-1] = stack[p-1]+stack[p+1]
-      stack.splice(p, 2)
-      p--
-    }else if(stack[p]==="-"){
-      stack[p-1] = stack[p-1]-stack[p+1]
-      stack.splice(p, 2)
-      p--
-    }else{
-      p++
+  p = 0;
+  while (stack.length > 1) {
+    if (stack[p] === "+") {
+      stack[p - 1] = stack[p - 1] + stack[p + 1];
+      stack.splice(p, 2);
+      p--;
+    } else if (stack[p] === "-") {
+      stack[p - 1] = stack[p - 1] - stack[p + 1];
+      stack.splice(p, 2);
+      p--;
+    } else {
+      p++;
     }
   }
-  return stack[0]
+  return stack[0];
 };
-
-
-
 
 /**
  * @param {string} s
@@ -431,11 +428,11 @@ var calculate = function (s) {
  */
 // GPT Solution
 var calculate = function (s) {
-  s = s.replace(/\s+/g, '');
-  
+  s = s.replace(/\s+/g, "");
+
   let stack = [];
   let num = 0;
-  let sign = '+';
+  let sign = "+";
 
   for (let i = 0; i < s.length; i++) {
     const char = s[i];
@@ -446,14 +443,14 @@ var calculate = function (s) {
     }
 
     if (isNaN(char) || i === s.length - 1) {
-      if (sign === '+') {
+      if (sign === "+") {
         stack.push(num);
-      } else if (sign === '-') {
+      } else if (sign === "-") {
         stack.push(-num);
-      } else if (sign === '*') {
+      } else if (sign === "*") {
         stack.push(stack.pop() * num);
-      } else if (sign === '/') {
-        stack.push(Math.trunc(stack.pop() / num)); 
+      } else if (sign === "/") {
+        stack.push(Math.trunc(stack.pop() / num));
       }
 
       sign = char;
@@ -464,8 +461,165 @@ var calculate = function (s) {
   return stack.reduce((a, b) => a + b, 0);
 };
 
-
 // console.log(calculate("3+2*2"));
 // console.log(calculate(" 3/2 "));
 // console.log(calculate(" 3+55 / 2*2*2 /2 "));
 // console.log(calculate("1-1"));
+
+/*********************************************************************** */
+// 7- Remove Duplicate Letters
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+
+var removeDuplicateLetters = function (s) {
+  let lastOccurrence = {};
+  let stack = [];
+  let seen = new Set();
+
+  // حفظ آخر ظهور لكل حرف
+  for (let i = 0; i < s.length; i++) {
+    lastOccurrence[s[i]] = i;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+
+    if (seen.has(char)) continue;
+
+    // إزالة الحروف التي تحقق الشروط
+    while (
+      stack.length > 0 &&
+      char < stack[stack.length - 1] &&
+      lastOccurrence[stack[stack.length - 1]] > i
+    ) {
+      seen.delete(stack.pop());
+    }
+
+    stack.push(char);
+    seen.add(char);
+  }
+
+  return stack.join("");
+};
+
+// console.log(removeDuplicateLetters("cbacdcbc"));
+// console.log(removeDuplicateLetters("bcabc"));
+// console.log(removeDuplicateLetters("cdadabcc"));
+// console.log(removeDuplicateLetters("ecbacba"));
+
+/*********************************************************************** */
+// 8- 331. Verify Preorder Serialization of a Binary Tree
+
+/**
+ * @param {string} preorder
+ * @return {boolean}
+ */
+
+function checkHaveConsecutiveChars(char, num, arr) {
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === char) {
+      count++;
+      if (count === num) {
+        return true; // إذا وجدنا العدد المطلوب من الحروف المتتالية
+      }
+    } else {
+      count = 0; // إذا كان الحرف غير متتالي نعيد العد إلى صفر
+    }
+  }
+
+  return false; // إذا لم نجد الحروف المتتالية المطلوبة
+}
+
+var isValidSerialization = function (preorder) {
+  let stack = preorder.split(",");
+  let diff = 1;
+
+  for (let i = 0; i < stack.length; i++) {
+    diff--;
+    if (diff < 0) {
+      return false;
+    }
+    if (stack[i] !== "#") {
+      diff += 2;
+    }
+  }
+
+  return diff === 0;
+};
+
+// console.log(isValidSerialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
+// console.log(isValidSerialization("9,3,#,1,#,#,2,#,6,#,#"));
+// console.log(isValidSerialization("9,3,#,#,2,#,6,#,#"));
+// console.log(isValidSerialization("9,3,#,#,2,#,#"));
+// console.log(isValidSerialization("9,#,2,#,#"));
+// console.log(isValidSerialization("9,#,#"));
+// console.log(isValidSerialization("1,#"));
+// console.log(isValidSerialization("9,#,#,1"));
+// console.log(isValidSerialization("9,#,#"));
+// console.log(isValidSerialization(""));
+// console.log(isValidSerialization("1,#,#,#,#,#"));
+
+/*********************************************************************** */
+// 9- 341. Flatten Nested List Iterator
+
+// function NestedInteger() {
+//   // Return true if this NestedInteger holds a single integer, rather than a nested list.
+//   // @return {boolean}
+//   this.isInteger = function () {};
+
+//   // Return the single integer that this NestedInteger holds, if it holds a single integer
+//   // Return null if this NestedInteger holds a nested list
+//   // @return {integer}
+//   this.getInteger = function () {};
+
+//   // Return the nested list that this NestedInteger holds, if it holds a nested list
+//   // Return null if this NestedInteger holds a single integer
+//   // @return {NestedInteger[]}
+//   this.getList = function () {};
+// }
+/**
+ * @constructor
+ * @param {NestedInteger[]} nestedList
+ */
+var NestedIterator = function (nestedList) {
+  this.stack = dfs(nestedList)
+
+  function dfs(nestedList, arr=[]){
+      for (const ele of nestedList) {
+        if(ele.isInteger()){
+          arr.push(ele.getInteger())
+        }else{
+          dfs(ele.getList(), arr)
+        }
+      }
+      return arr
+  }
+
+};
+
+/**
+ * @this NestedIterator
+ * @returns {boolean}
+ */
+NestedIterator.prototype.hasNext = function () {
+  return this.stack.length
+};
+
+/**
+ * @this NestedIterator
+ * @returns {integer}
+ */
+NestedIterator.prototype.next = function () {
+  return this.stack.shift()
+};
+
+//  Your NestedIterator will be called like this:
+var i = new NestedIterator([[1,1],2,[1,2]]),
+  a = [];
+while (i.hasNext()) a.push(i.next());
+
