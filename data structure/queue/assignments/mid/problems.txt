@@ -1,7 +1,0 @@
-1- 622. Design Circular Queue
-link: https://leetcode.com/problems/design-circular-queue/description/?envType=problem-list-v2&envId=queue
-********************************************************************
-# 2- 641. Design Circular Deque
-link: https://leetcode.com/problems/design-circular-deque/description/?envType=problem-list-v2&envId=queue
-********************************************************************
-

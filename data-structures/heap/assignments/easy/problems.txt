@@ -1,0 +1,44 @@
+1- 506. Relative Ranks
+link: https://leetcode.com/problems/relative-ranks/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+2- 703. Kth Largest Element in a Stream
+link: https://leetcode.com/problems/kth-largest-element-in-a-stream/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+3- 1046. Last Stone Weight
+link: https://leetcode.com/problems/last-stone-weight/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+4- 1337. The K Weakest Rows in a Matrix
+link: https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+5- 1464. Maximum Product of Two Elements in an Array
+link: https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+6- 2099. Find Subsequence of Length K With the Largest Sum 
+link: https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+7- 2231. Largest Number After Digit Swaps by Parity
+link: https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+8- 2357. Make Array Zero by Subtracting Equal Amounts
+link: https://leetcode.com/problems/make-array-zero-by-subtracting-equal-amounts/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+9- 2335. Minimum Amount of Time to Fill Cups
+link: https://leetcode.com/problems/minimum-amount-of-time-to-fill-cups/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+10- 2500. Delete Greatest Value in Each Row
+link: https://leetcode.com/problems/delete-greatest-value-in-each-row/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+11- 2558. Take Gifts From the Richest Pile
+link: https://leetcode.com/problems/take-gifts-from-the-richest-pile/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+

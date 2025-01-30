@@ -1,0 +1,16 @@
+1- 215. Kth Largest Element in an Array 
+link: https://leetcode.com/problems/kth-largest-element-in-an-array/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+2- 264. Ugly Number II
+link: https://leetcode.com/problems/ugly-number-ii/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+3- 347. Top K Frequent Elements
+link: https://leetcode.com/problems/top-k-frequent-elements/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+
+4- 355. Design Twitter
+link: https://leetcode.com/problems/design-twitter/description/?envType=problem-list-v2&envId=heap-priority-queue
+/*********************************************************************** */
+

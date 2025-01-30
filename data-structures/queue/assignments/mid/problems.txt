@@ -1,0 +1,23 @@
+1- 622. Design Circular Queue
+link: https://leetcode.com/problems/design-circular-queue/description/?envType=problem-list-v2&envId=queue
+********************************************************************
+2- 641. Design Circular Deque
+link: https://leetcode.com/problems/design-circular-deque/description/?envType=problem-list-v2&envId=queue
+********************************************************************
+3- 649. Dota2 Senate
+link: https://leetcode.com/problems/dota2-senate/description/?envType=problem-list-v2&envId=queue
+********************************************************************
+4- 918. Maximum Sum Circular Subarray
+link: https://leetcode.com/problems/maximum-sum-circular-subarray/description/?envType=problem-list-v2&envId=queue
+NOT Solved
+********************************************************************
+5- 1670. Design Front Middle Back Queue
+link: https://leetcode.com/problems/maximum-sum-circular-subarray/description/?envType=problem-list-v2&envId=queue
+********************************************************************
+6- 1696. Jump Game VI
+link: https://leetcode.com/problems/jump-game-vi/description/?envType=problem-list-v2&envId=queue
+********************************************************************
+7- 1823. Find the Winner of the Circular Game
+link: https://leetcode.com/problems/find-the-winner-of-the-circular-game/description/?envType=problem-list-v2&envId=queue 
+********************************************************************
+
